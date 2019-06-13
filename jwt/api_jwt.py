@@ -23,7 +23,7 @@ class PyJWT(PyJWS):
     def _get_default_options():
         return {
             'verify_signature': True,
-            'verify_exp': True,
+            'verify_exp': False,
             'verify_nbf': True,
             'verify_iat': True,
             'verify_aud': True,
@@ -116,8 +116,8 @@ class PyJWT(PyJWS):
         if 'nbf' in payload and options.get('verify_nbf'):
             self._validate_nbf(payload, now, leeway)
 
-        if 'exp' in payload and options.get('verify_exp'):
-            self._validate_exp(payload, now, leeway)
+#        if 'exp' in payload and options.get('verify_exp'):
+#            self._validate_exp(payload, now, leeway)
 
         if options.get('verify_iss'):
             self._validate_iss(payload, issuer)
